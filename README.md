@@ -1,43 +1,54 @@
 # Gemini API & Firebase를 이용한 외모 점수 웹페이지 만들기
 
-## 개발 환경
+
+## 1. 개발 환경
 
 ### Google IDX
 - https://idx.google.com/
+
 
 ### Gemini
 - Create API Key: http://goo.gle/aistudio-korea-YT
 - API 가이드: https://ai.google.dev/gemini-api/docs/get-started/tutorial?lang=node&hl=ko
 
 ### Firebase
-1. [구글 클라우드 가입 & 결제 설정](https://cloud.google.com/?hl=ko)
+1. [구글 클라우드 가입](https://cloud.google.com/?hl=ko)
 2. [구글 애널리틱스 가입 (선택)](https://analytics.google.com/analytics/web/?pli=1#/)
-3. [Firebase 가입 및 프로젝트 생성](https://firebase.google.com/)
-4. Firebase 설치하기: [설치 가이드](https://firebase.google.com/docs/functions/get-started?hl=ko&_gl=1*pqsuxx*_up*MQ)
-5. Firebase Cloud Functions 사용하기: [설명서](https://firebase.google.com/docs/functions/http-events?hl=ko&gen=2nd#node.js)
-6. 테스트 하기:
+3. [Firebase 가입 및 프로젝트 생성](https://firebase.google.com/)(Functions 사용을 위해 Blaze 요금제로 변경)
+   - [사용량](https://firebase.google.com/pricing?hl=ko) 초과시 요금 부과 되니 주의하여 사용
+   - <details>
+        <summary>구글 클라우드 결제설정(Firebase선택)</summary>
+        <img src="https://github.com/user-attachments/assets/2e556a93-1ab4-48b9-8b4d-e61a7b7004c9">
+    </details>   
+4. [Firebase 설정(2~3까지 진행)](https://firebase.google.com/docs/functions/get-started?hl=ko&_gl=1*pqsuxx*_up*MQ&gen=2nd#set-up-your-environment-and-the-firebase-cli)
+    - Installtion Package Add
+      ```sh
+      npm install busboy cors sharp --save
+      ```
+5. Firebase Cloud Functions 응답확인([link](https://firebase.google.com/docs/functions/http-events?hl=ko&gen=2nd#node.js))
+      ```
+      const { onRequest } = require("firebase-functions/v2/https");
+      
+      exports.sayHello = onRequest(
+        { cors: [/firebase\.com$/, "flutter.com"] },
+        (req, res) => {
+          res.status(200).send("Hello world!");
+        }
+      );
+      ```
+6. 로컬 테스트:
     ```sh
     firebase init emulators
     firebase emulators:start
     ```
-### Installed Package
-functions@ /home/user/geminihackathon-deny/functions
-├── @google/generative-ai@0.14.1
-├── busboy@1.6.0
-├── cors@2.8.5
-├── firebase-admin@12.2.0
-├── firebase-functions-test@3.3.0
-├── firebase-functions@5.0.1
-└── sharp@0.33.4
+7. 코드 작성
+    - Front-end(public/index.html)
+    - Back-end(/functions/index.js)
+      
+8. Firebase 배포
+   - Front-end([Firebase Hosting Quickstart](https://firebase.google.com/docs/hosting/quickstart?_gl=1*10e86in*_up*MQ))
+   - Back-end([Firebase Cloud Functions Deploy](https://firebase.google.com/docs/functions/get-started?hl=ko&gen=2nd#deploy-functions-to-a-production-environment))
 
-## 3. Firebase로 배포하기
+9. Web 결과 확인
 
-### 프론트엔드 배포하기
-- [Firebase Hosting Quickstart](https://firebase.google.com/docs/hosting/quickstart?_gl=1*10e86in*_up*MQ)
-
-### 백엔드 배포하기
-- [Firebase Cloud Functions 배포 가이드](https://firebase.google.com/docs/functions/get-started)
-
-</details>
-
-
+[출처] : 조코딩([YouTube](https://www.youtube.com/live/ltm6r3dZ4Ag?si=fobWLaFzT5TBY6s5))
