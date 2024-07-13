@@ -1,11 +1,8 @@
 # Gemini API & Firebase를 이용한 외모 점수 웹페이지 만들기
 
 
-## 1. 개발 환경
-
 ### Google IDX
 - https://idx.google.com/
-
 
 ### Gemini
 - Create API Key: http://goo.gle/aistudio-korea-YT
@@ -25,7 +22,7 @@
       ```sh
       npm install busboy cors sharp --save
       ```
-5. Firebase Cloud Functions 응답확인([link](https://firebase.google.com/docs/functions/http-events?hl=ko&gen=2nd#node.js))
+5. Firebase Cloud Functions 백엔드 응답확인([link](https://firebase.google.com/docs/functions/http-events?hl=ko&gen=2nd#node.js))
       ```
       const { onRequest } = require("firebase-functions/v2/https");
       
@@ -42,12 +39,12 @@
     firebase emulators:start
     ```
 7. 코드 작성
-    - Front-end(public/index.html)
-    - Back-end(/functions/index.js)
+    - 프론트엔드(public/index.html)
+    - 백엔드(/functions/index.js)
       
 8. Firebase 배포
-   - Front-end([Firebase Hosting Quickstart](https://firebase.google.com/docs/hosting/quickstart?_gl=1*10e86in*_up*MQ))
-   - Back-end([Firebase Cloud Functions Deploy](https://firebase.google.com/docs/functions/get-started?hl=ko&gen=2nd#deploy-functions-to-a-production-environment))
+   - 프론트엔드([Firebase Hosting Quickstart](https://firebase.google.com/docs/hosting/quickstart?_gl=1*10e86in*_up*MQ))
+   - 백엔드([Firebase Cloud Functions Deploy](https://firebase.google.com/docs/functions/get-started?hl=ko&gen=2nd#deploy-functions-to-a-production-environment))
 
 9. Web 결과 확인
 
